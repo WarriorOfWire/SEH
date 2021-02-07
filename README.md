@@ -22,7 +22,7 @@ rollups)
 
 
 ## Example usage with TimescaleDB Continuous Aggregates
-
+```
 CREATE MATERIALIZED VIEW metrics_1h
 WITH (timescaledb.continuous) AS
   SELECT
@@ -36,6 +36,7 @@ WITH (timescaledb.continuous) AS
 select add_continuous_aggregate_policy('metrics_1h', start_offset => interval '10 minutes', end_offset => interval '1 minute', schedule_interval => interval '1 minute');
 
 grant select on metrics_1h to grafana_read_role;  -- You do have a limited role for grafana in your db right?
+```
 
 
 And in Grafana for latency of devices reporting to IAD:
